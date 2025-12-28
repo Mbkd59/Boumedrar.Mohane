@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio – Ingénieur / Alternance</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #020617;
+      --card: rgba(2,6,23,0.75);
+      --primary: #38bdf8;
+      --secondary: #22d3ee;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+    }
+
+    body.light {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #020617;
+      --muted: #475569;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      transition: 0.4s;
+      overflow-x: hidden;
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: slideDown 1s ease forwards;
+    }
+
+    header p {
+      margin-top: 15px;
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 650px;
+    }
+
+    .actions {
+      margin-top: 35px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 14px 26px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .primary {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: #000;
+      box-shadow: 0 0 25px #38bdf855;
+    }
+
+    .primary:hover { transform: translateY(-4px); }
+
+    .outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .outline:hover { background: var(--primary); color: #000; }
+
+    section {
+      padding: 100px 12%;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: 0.8s;
+    }
+
+    section.show { opacity: 1; transform: translateY(0); }
+
+    h2 { font-size: 2.2rem; margin-bottom: 40px; color: var(--primary); }
+
+    .timeline {
+      border-left: 3px solid var(--primary);
+      padding-left: 30px;
+    }
+
+    .step {
+      margin-bottom: 40px;
+    }
+
+    .step h3 { color: var(--secondary); }
+
+    .skills-grid, .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      border-radius: 18px;
+      padding: 25px;
+      border: 1px solid #38bdf833;
+      transition: 0.4s;
+    }
+
+    .card:hover { transform: translateY(-6px); box-shadow: 0 0 30px #38bdf822; }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 10;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<button class="btn outline toggle" onclick="toggleMode()">🌙 / ☀️</button>
+
+<header>
+  <h1>Prénom Nom</h1>
+  <p>Portfolio étudiant – BUT DInCS | Réseaux • IoT • Cybersécurité<br>Écoles d’ingénieurs & alternance</p>
+  <div class="actions">
+    <a href="#projects" class="btn primary">Projets</a>
+    <a href="cv/CV_Prenom_Nom.pdf" class="btn outline" download>CV</a>
+  </div>
+</header>
+
+<section class="show">
+  <h2>À propos</h2>
+  <p>Étudiant issu d’un BTS CIEL et actuellement en BUT DInCS. Je développe des projets orientés infrastructures réseau, systèmes connectés et cybersécurité avec une approche pratique.</p>
+</section>
+
+<section>
+  <h2>Parcours</h2>
+  <div class="timeline">
+    <div class="step">
+      <h3>BTS CIEL</h3>
+      <p>Réseaux, systèmes, électronique et bases programmation.</p>
+    </div>
+    <div class="step">
+      <h3>BUT DInCS</h3>
+      <p>Déploiement, sécurisation et exploitation des infrastructures numériques.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Compétences</h2>
+  <div class="skills-grid">
+    <div class="card"><h3>Réseaux</h3><p>TCP/IP, VLAN, routage, sécurité</p></div>
+    <div class="card"><h3>IoT</h3><p>ESP32, MQTT, capteurs</p></div>
+    <div class="card"><h3>Développement</h3><p>C#, C/C++, Python</p></div>
+    <div class="card"><h3>Systèmes</h3><p>Linux, Windows, services</p></div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projets</h2>
+  <div class="projects">
+    <div class="card"><h3>⏱️ Chronométrage RFID</h3><p>ESP32, MQTT, C#</p><a class="btn outline" href="#">GitHub</a></div>
+    <div class="card"><h3>📡 ESP32 & MQTT</h3><p>Communication IoT temps réel</p><a class="btn outline" href="#">GitHub</a></div>
+    <div class="card"><h3>🌐 Réseau</h3><p>Topologies et sécurité</p><a class="btn outline" href="#">GitHub</a></div>
+  </div>
+</section>
+
+<footer>© 2025 – Portfolio Ingénieur / Alternance</footer>
+
+<script>
+  const sections = document.querySelectorAll('section');
+  window.addEventListener('scroll', () => {
+    sections.forEach(sec => {
+      if (sec.getBoundingClientRect().top < window.innerHeight - 120) {
+        sec.classList.add('show');
+      }
+    });
+  });
+
+  function toggleMode() {
+    document.body.classList.toggle('light');
+  }
+</script>
+
+</body>
+</html>
